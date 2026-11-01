@@ -73,7 +73,7 @@
 
   /* Hero */
   .hero{background:radial-gradient(1200px 500px at 85% 10%,#F3D9B1 0%,transparent 60%),linear-gradient(180deg,#F7E6CB 0%,var(--sand) 100%);padding:clamp(40px,6vw,80px) 0 clamp(56px,7vw,90px)}
-  .hero-grid{display:grid;grid-template-columns:1.02fr 1fr;align-items:center;gap:3.2rem}
+  .hero-grid{display:grid;grid-template-columns:.92fr 1.12fr;align-items:center;gap:3.2rem}
   .pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--green);color:#F7E9C6;border-radius:999px;padding:.4rem .95rem;font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.1rem}
   .pill i{width:8px;height:8px;border-radius:50%;background:#7BD389;box-shadow:0 0 0 4px rgba(123,211,137,.25)}
   .hero h1 em{font-style:italic;color:var(--terra)}
@@ -87,14 +87,14 @@
   .price-card b small{font-family:Manrope,sans-serif;font-size:.8rem;color:var(--muted);font-weight:600}
   .price-card.hot b{color:var(--terra)}
   .hero-photo{position:relative}
-  .hero-photo .frame{border-radius:220px 220px 26px 26px;overflow:hidden;box-shadow:0 40px 70px -30px rgba(31,61,43,.55);border:6px solid #fff;aspect-ratio:4/4.1}
-  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-  .hero-photo .tag{position:absolute;left:-18px;bottom:28px;background:#fff;border-radius:16px;padding:.8rem 1rem;display:flex;gap:.7rem;align-items:center;box-shadow:var(--shadow)}
+  .hero-photo .frame{border-radius:26px;overflow:hidden;box-shadow:0 40px 70px -30px rgba(31,61,43,.55);border:6px solid #fff;background:#fff}
+  .hero-photo img{width:100%;height:auto;border-radius:20px}
+  .hero-photo .tag{position:absolute;left:-18px;bottom:-22px;background:#fff;border-radius:16px;padding:.8rem 1rem;display:flex;gap:.7rem;align-items:center;box-shadow:var(--shadow)}
   .hero-photo .tag b{display:block;color:var(--green);font-size:.95rem}
   .hero-photo .tag span{font-size:.8rem;color:var(--muted)}
-  .hero-photo .approved{position:absolute;right:-12px;top:34px;background:var(--green);color:#fff;border-radius:999px;padding:.55rem 1rem;font-weight:800;font-size:.85rem;display:flex;gap:.45rem;align-items:center;box-shadow:var(--shadow)}
+  .hero-photo .approved{position:absolute;right:-12px;top:-16px;background:var(--green);color:#fff;border-radius:999px;padding:.55rem 1rem;font-weight:800;font-size:.85rem;display:flex;gap:.45rem;align-items:center;box-shadow:var(--shadow)}
   .art-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:.7rem}
-  @media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-photo{max-width:520px;margin:0 auto;width:100%}.hero-photo .tag{left:8px}.hero-photo .approved{right:8px}}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:2.4rem}.hero-photo{max-width:560px;margin:14px auto 0;width:100%;order:-1}.price-card{flex:1 1 140px}.price-card b{font-size:1.2rem}.hero-photo .tag{display:none}.hero-photo .tag{left:8px}.hero-photo .approved{right:8px}}
 
   /* Facts strip */
   .facts{background:var(--green);color:#EAF0E8;padding:0}
@@ -287,13 +287,13 @@
       </div>
     </div>
     <div class="hero-photo">
-      <div class="frame"><img src="img/gate.jpg" alt="Entrance gate of Shree Radha Enclave, Boraj, lit with diyas" width="1064" height="744"></div>
+      <div class="frame"><img src="img/gate.jpg" alt="Entrance gate of Shree Radha Enclave, Boraj, lit with diyas" width="1060" height="740"></div>
       <div class="approved"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Society Approved</div>
       <div class="tag">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
         <div><b>Boraj, Ajmer Road</b><span>Jaipur, Rajasthan</span></div>
       </div>
-      <p class="art-note">Artist's impression of the entrance gate</p>
+      <p class="art-note" style="text-align:right;margin-top:.9rem">Artist's impression of the entrance gate</p>
     </div>
   </div>
 </section>
