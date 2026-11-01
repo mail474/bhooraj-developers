@@ -656,12 +656,13 @@ form.addEventListener('submit', async (e) => {
   if (d.email) payload._replyto = d.email;
 
   btn.disabled = true; btn.textContent = 'Sending…';
-  let sent = false;
+  let sent = false, reason = '';
   try {
     const res = await fetch(`https://formsubmit.co/ajax/${SITE.email}`, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload) });
     const j = await res.json().catch(()=>({}));
     sent = res.ok && (j.success === true || j.success === 'true');
-  } catch(err) { sent = false; }
+    if (!sent) reason = (j.message || ('Server replied ' + res.status));
+  } catch(err) { reason = 'Could not reach the form service (' + (err && err.message || 'network error') + ')'; }
   btn.disabled = false; btn.textContent = 'Send enquiry';
 
   if (sent) {
@@ -672,10 +673,12 @@ form.addEventListener('submit', async (e) => {
     const body = Object.entries(payload).filter(([k])=>!k.startsWith('_')).map(([k,v])=>`${k}: ${v}`).join('\n');
     const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(payload._subject)}&body=${encodeURIComponent(body)}`;
     statusEl.className = 'form-status err';
-    statusEl.innerHTML = `We couldn't send the form from here. Please email your enquiry to <b>${SITE.email}</b>:
+    const activation = /activat/i.test(reason);
+    statusEl.innerHTML = `${activation ? 'Our enquiry form is being set up and could not send your message yet.' : "We couldn't send the form from here."} Please email your enquiry to <b>${SITE.email}</b>:
       <pre>${esc(body)}</pre>
       <a class="btn btn-primary btn-sm" href="${mailto}">Open email app</a>
-      <button type="button" class="btn btn-ghost btn-sm" id="copyEnq">Copy details</button>`;
+      <button type="button" class="btn btn-ghost btn-sm" id="copyEnq">Copy details</button>
+      <small style="display:block;margin-top:.7rem;opacity:.75">Details: ${esc(reason)}</small>`;
     document.getElementById('copyEnq').addEventListener('click', async (ev) => {
       try { await navigator.clipboard.writeText(`To: ${SITE.email}\n${body}`); ev.target.textContent = 'Copied'; }
       catch(_) { ev.target.textContent = 'Select the text above to copy'; }
